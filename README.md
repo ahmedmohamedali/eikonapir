@@ -3,7 +3,9 @@
 
 
 ### Prerequisites
-To use this R api you will need to have **Thomson Reuters Eikon API Proxy** installed and running
+To use this R api you will need to have  <br />
+- **A homson Reuters Eikon License** (please visit https://customers.thomsonreuters.com/eikon/) <br />
+- The **Thomson Reuters Eikon API Proxy** installed and running. For more information please visit https://developers.thomsonreuters.com/eikon-apis/eikon-web-and-scripting-apis-limited-access 
 
 ## Installation instruction
 In the R interpreter type the following commands

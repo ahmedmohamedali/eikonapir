@@ -2,8 +2,7 @@
 send_json_request <- function(entity, request_data, debug=FALSE)
 {
 
-  request_info = get_request_info()
-  if (typeof(data) == 'character')
+  if (typeof(request_data) == 'character')
   {
     payload = jsonlite::fromJSON(request_data)
   }
@@ -11,8 +10,10 @@ send_json_request <- function(entity, request_data, debug=FALSE)
   {
     payload = request_data;
   }
+
+  url = paste('http://localhost:',get_proxy_port(),'/api/v1/data',sep='')
   request <- list('Entity'= list('E'= entity, 'W'= payload))
-  response <- httr::POST(request_info@url, httr::add_headers('Content-Type'='application/json','x-tr-applicationid'=get_app_id()),body=request,encode = "json")
+  response <- httr::POST(url, httr::add_headers('Content-Type'='application/json','x-tr-applicationid'=get_app_id()),body=request,encode = "json")
   response_data <- httr::content(response, "text")
   response_status <- response$status_code
 

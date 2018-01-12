@@ -1,14 +1,94 @@
+#'
+#' init
+#'
+#' Initialize the library context
+#'
+#'
+#' @examples
+#'--------
+#' library(eikon_r)
+#' init()
+
+init <- function()
+{
+
+  if (exists("requestInfo") == FALSE)
+  {
+    requestInfo <<- new("RequestInfo")
+  }
+
+
+}
+
+#'
+#' set_app_id
+#'
+#' Use this function to set your application id.
+#' The application id should be set before calling functions to retrieve data
+#' @param appId: string
+#'
+#'
+#' @examples
+#'--------
+#' library(eikon_r)
+#' set_app_id('YOUR_APP_ID')
+
 set_app_id <- function(appId) {
-  requestInfo <<- RequestInfo(appId)
+  init()
+  requestInfo@application_id <<- appId
 }
 
-get_app_id <- function() {
-  return(requestInfo@application_id)
+
+#'
+#' get_app_id
+#'
+#' Use this function to get back the application id you have set earlier with set_app_id.
+#'
+#'
+#' @examples
+#'--------
+#' library(eikon_r)
+#' my_app_id = get_app_id()
+
+get_app_id <- function(appId) {
+  init()
+  return (requestInfo@application_id)
 }
 
-get_request_info <- function() {
-  return(requestInfo)
+
+#'
+#' set_proxy_port
+#'
+#' By default the library will try to connect to the proxy default port 9000.
+#' Use this function if the proxy is listening on another port than 9000
+#' @param port: integer
+#'
+#'
+#' @examples
+#'--------
+#' library(eikon_r)
+#' set_proxy_port(37009L)
+set_proxy_port <- function(port) {
+  init()
+  requestInfo@proxy_port <<- port
 }
+
+#'
+#' get_proxy_port
+#'
+#' Use this function to get back the proxy port the library will connect to
+#'
+#'
+#' @examples
+#'--------
+#' library(eikon_r)
+#' prox_port = get_proxy_port()
+
+get_proxy_port <- function(port) {
+  init()
+  return (requestInfo@proxy_port)
+}
+
 
 
 
@@ -19,12 +99,11 @@ RequestInfo <- setClass(
   # Define the slots
   slots = c(
     application_id  = "character",
-    port            = "integer",
-    url             = "character",
-    streaming_url   = "character"
+    proxy_port            = "integer",
+    url             = "character"
   ),
 
-  prototype=list(application_id="",port=36036L,url="",streaming_url=""),
+  prototype=list(application_id="",proxy_port=9000L,url=""),
 
   # Make a function that can test to see if the data is consistent.
   # This is not called if you have an initialize function defined!
@@ -41,13 +120,6 @@ RequestInfo <- setClass(
 
 
 
-RequestInfo <- function(appId)  {
 
-  port_number <- 36036L
-  request_url <- paste('http://localhost:',port_number,'/api/v1/data',sep='')
-  request_streaming_url <- paste('ws://localhost:',port_number,'/?',sep='')
-  new("RequestInfo",application_id=appId, port=36036L,url=request_url,streaming_url= request_streaming_url)
-
-}
 
 

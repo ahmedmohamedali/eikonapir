@@ -39,7 +39,6 @@
 
 get_symbology <- function(symbol, from_symbol_type='RIC', to_symbol_type=NULL, raw_ouput=FALSE, debug=FALSE)
 {
-  set_app_id('ED142B67FBF0B94BAC3AB')
   Symbology_endpoint = 'SymbologySearch'
   if (is.character(to_symbol_type))
   {

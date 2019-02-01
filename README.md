@@ -1,3 +1,5 @@
+ [![Travis build status](https://travis-ci.org/ahmedmohamedali/eikonapir.svg?branch=master)](https://travis-ci.org/ahmedmohamedali/eikonapir)
+ 
 # eikonapir
 # R wrapper for Refinitiv Eikon API 
 

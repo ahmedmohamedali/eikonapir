@@ -4,9 +4,10 @@
 \alias{get_timeseries}
 \title{get_timeseries}
 \usage{
-get_timeseries(rics, fields = "*", start_date = NULL, end_date = NULL,
-  interval = "daily", normalize = FALSE, count = NULL, calendar = NULL,
-  corax = NULL, raw_output = FALSE, debug = FALSE)
+get_timeseries(rics, fields = "*", start_date = NULL,
+  end_date = NULL, interval = "daily", normalize = FALSE,
+  count = NULL, calendar = NULL, corax = NULL, raw_output = FALSE,
+  debug = FALSE)
 }
 \arguments{
 \item{rics:}{string or list of strings.

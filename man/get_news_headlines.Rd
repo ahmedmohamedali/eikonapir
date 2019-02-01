@@ -4,8 +4,9 @@
 \alias{get_news_headlines}
 \title{get_news_headlines}
 \usage{
-get_news_headlines(query = "Topic:TOPALL and Language:LEN", count = 10L,
-  date_from = NULL, date_to = NULL, raw_output = FALSE, debug = FALSE)
+get_news_headlines(query = "Topic:TOPALL and Language:LEN",
+  count = 10L, date_from = NULL, date_to = NULL,
+  raw_output = FALSE, debug = FALSE)
 }
 \arguments{
 \item{query:}{string, optional. Search criteria for the news headlines

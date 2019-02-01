@@ -1,11 +1,13 @@
 # eikonapir
-# R wrapper for Thomson Reuters Eikon API 
+# R wrapper for Refinitiv Eikon API 
 
 
 ### Prerequisites
 To use this R api you will need to have  <br />
-- **A homson Reuters Eikon License** (please visit https://customers.thomsonreuters.com/eikon/) <br />
-- The **Thomson Reuters Eikon API Proxy** installed and running. For more information please visit https://developers.thomsonreuters.com/eikon-apis/eikon-web-and-scripting-apis-limited-access 
+- **A Refinitiv Eikon License** (please visit https://customers.thomsonreuters.com/eikon/) <br />
+- **Refinitiv Eikon4** installed 
+or
+- The **Refinitiv Eikon API Proxy** installed and running. For more information please visit https://developers.thomsonreuters.com/eikon-apis/eikon-web-and-scripting-apis-limited-access 
 
 ## Installation instruction
 In the R interpreter type the following commands

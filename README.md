@@ -35,7 +35,8 @@ In the R interpreter type the following commands
 * DONE (eikonapir)
 ```
 ### Run
-Start the **Thomson Reuters Eikon API Proxy** and Run the various test functions in the file R/tests.R 
+- Start **Refinitiv Eikon** or **Refinitiv Eikon API Proxy**
+- Run the various test functions in the file R/tests.R 
 
 You can find the API documentation in the **man** directory 
 

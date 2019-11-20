@@ -5,7 +5,6 @@ Description: An implementation in the R language of the Refinitiv API for the Ei
 Version: 0.1.0
 Author: Ahmed Mohamed Ali
 Maintainer: Ahmed Mohamed Ali <ahmed.mohamedali2016@gmail.com>
-Description: 
 License: Apache2
 Encoding: UTF-8
 LazyData: true

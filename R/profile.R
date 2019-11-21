@@ -14,7 +14,7 @@ init <- function()
 
   if (exists("requestInfo") == FALSE)
   {
-    requestInfo <<- new("RequestInfo")
+    requestInfo <<- methods::new("RequestInfo")
   }
 
 

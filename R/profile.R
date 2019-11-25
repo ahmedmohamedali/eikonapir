@@ -1,14 +1,4 @@
-#'
-#' init
-#'
-#' Initialize the library context
-#'
-#'
-#' @examples
-#'--------
-#' library(eikon_r)
-#' init()
-
+ini
 init <- function()
 {
 
@@ -20,75 +10,60 @@ init <- function()
 
 }
 
-#'
 #' set_app_id
 #'
 #' Use this function to set your application id.
 #' The application id should be set before calling functions to retrieve data
-#' @param appId: string
-#'
+#' @param appId string
 #'
 #' @examples
-#'--------
-#' library(eikon_r)
 #' set_app_id('YOUR_APP_ID')
-
+#' @export
 set_app_id <- function(appId) {
   init()
   requestInfo@application_id <<- appId
 }
 
 
-#'
 #' get_app_id
 #'
 #' Use this function to get back the application id you have set earlier with set_app_id.
 #'
-#'
 #' @examples
-#'--------
-#' library(eikon_r)
 #' my_app_id = get_app_id()
-
-get_app_id <- function(appId) {
+#' @export
+get_app_id <- function() {
   init()
   return (requestInfo@application_id)
 }
 
 
-#'
 #' set_proxy_port
 #'
 #' By default the library will try to connect to the proxy default port 9000.
 #' Use this function if the proxy is listening on another port than 9000
-#' @param port: integer
-#'
+#' @param port integer
 #'
 #' @examples
-#'--------
-#' library(eikon_r)
 #' set_proxy_port(37009L)
+#' @export
 set_proxy_port <- function(port) {
   init()
   requestInfo@proxy_port <<- port
 }
 
-#'
 #' get_proxy_port
 #'
 #' Use this function to get back the proxy port the library will connect to
 #'
 #'
 #' @examples
-#'--------
-#' library(eikon_r)
 #' prox_port = get_proxy_port()
-
-get_proxy_port <- function(port) {
+#' @export
+get_proxy_port <- function() {
   init()
   return (requestInfo@proxy_port)
 }
-
 
 
 
@@ -117,9 +92,4 @@ RequestInfo <- setClass(
 
 
 )
-
-
-
-
-
 

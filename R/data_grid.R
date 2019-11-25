@@ -1,22 +1,21 @@
 DataGrid_UDF_endpoint = 'DataGrid'
 
 
-#
 #' TR_Field
 #'
 #' This is a helper function to build the field for the get_data function
 #' Returns a dictionary that can directly passed to get_data
 #'
-#' @param field_name: string
-#' @param params: dictionary containing the parameters for the field passed in the argument field_name
-#' @param sort_dir: string. Indicate the sort direction. Possible values are 'asc' or 'desc'. The default value is 'asc'
-#' @param sort_priority: integer. Gives a piority to the field for the sorting. The highest priority is 0 (zero). the default value is None
+#' @param field_name string
+#' @param params dictionary containing the parameters for the field passed in the argument field_name
+#' @param sort_dir string. Indicate the sort direction. Possible values are 'asc' or 'desc'. The default value is 'asc'
+#' @param sort_priority integer. Gives a piority to the field for the sorting. The highest priority is 0 (zero). the default value is None
 #'
 #' @examples
-#' > TR_Field('tr.revenue')
-#' > TR_Field('tr.open','asc',1)
-#' > TR_Field('TR.GrossProfit',list('Scale': 6, 'Curn': 'EUR'),'asc',0)
-
+#' TR_Field('tr.revenue')
+#' TR_Field('tr.open','asc',1)
+#' TR_Field('TR.GrossProfit',list('Scale' = 6, 'Curn' = 'EUR'),'asc',0)
+#' @export
 TR_Field  <- function (field_name,params = NULL,sort_dir ='asc',sort_priority=NULL)
 {
 
@@ -43,14 +42,13 @@ TR_Field  <- function (field_name,params = NULL,sort_dir ='asc',sort_priority=NU
 }
 
 
-#'
 #'get_data
 #'
 #' Retreives fields for instruments with the sepcified parameters and sort criteria. The result is returned in a data frame
 #'
-#' @param instruments: string or list. A single instrument or list of instruments to request.
+#' @param instruments string or list. A single instrument or list of instruments to request.
 #'
-#' @param fields: string, named list or list of string and/or named list
+#' @param fields string, named list or list of string and/or named list
 #'   - Single field as a string: 'TR.PriceClose'
 #'   - Single field in a named list for providing parameters and/or sort option:
 #'     ex:
@@ -69,22 +67,27 @@ TR_Field  <- function (field_name,params = NULL,sort_dir ='asc',sort_priority=NU
 #'  Tips: You can launch the Data Item Browser to discover fields and parameters
 #'  or copy field names and parameters from TR Eikon - MS Office formulas
 #'
-#' @param parameters: string or named list. Single global parameter or a list of key=value in the named list.
+#' @param parameters string or named list. Single global parameter or a list of key=value in the named list.
 #'
-#' @param raw_output: boolean. By default the output is a data frame. Set raw_output=True to get data in Json format.
+#' @param raw_output boolean. By default the output is a data frame. Set raw_output=True to get data in Json format.
 #'
-#' @param debug: bool. When set to True, the json request and response are printed.
+#' @param debug bool. When set to True, the json request and response are printed.
 #'
 #'
 #' @examples
-#' --------
-
-#' > set_app_id('set your app id here')
-#' > data_frame = get_data(list("IBM", "GOOG.O", "MSFT.O"), list("TR.PriceClose", "TR.Volume", "TR.PriceLow"))
-#' > data_frame = get_data("IBM", list('TR.Employees', list('TR.GrossProfit'= list('params'=list('Scale'= 6, 'Curn'= 'EUR'),'sort_dir'='asc'))))
-#' > fields = list(TR_Field('tr.revenue'),TR_Field('tr.open',NULL,'asc',1),TR_Field('TR.GrossProfit',list('Scale'=6, 'Curn'='EUR'),'asc',0))
-#' > data_frame = get_data(list("IBM","MSFT.O"),fields)
-
+#' \dontrun{
+#' set_app_id('set your app id here')
+#' data_frame = get_data(list("IBM", "GOOG.O", "MSFT.O"),
+#'                       list("TR.PriceClose", "TR.Volume", "TR.PriceLow"))
+#' data_frame = get_data("IBM",
+#'                       list('TR.Employees',
+#'                            list('TR.GrossProfit'=
+#'                              list('params'=list('Scale'= 6, 'Curn'= 'EUR'),'sort_dir'='asc'))))
+#' fields = list(TR_Field('tr.revenue'),TR_Field('tr.open',NULL,'asc',1),
+#'               TR_Field('TR.GrossProfit',list('Scale'=6, 'Curn'='EUR'),'asc',0))
+#' data_frame = get_data(list("IBM","MSFT.O"),fields)
+#' }
+#' @export
 
 get_data <- function(instruments, fields, parameters=NULL, raw_output=FALSE, debug=FALSE)
 {

@@ -7,23 +7,23 @@
 get_news_story(story_id, raw_output = FALSE, debug = FALSE)
 }
 \arguments{
-\item{story_id:}{The story id. The story id is a field you will find in every headline retrieved with the function get_news_headlines}
+\item{story_id}{The story id. The story id is a field you will find in every headline retrieved with the function get_news_headlines}
 
-\item{raw_output:}{boolean. Set this parameter to True to get the data in json format
+\item{raw_output}{boolean. Set this parameter to True to get the data in json format
 The default value is False}
 
-\item{debug:}{bool. When set to True, the json request and response are printed.}
+\item{debug}{bool. When set to True, the json request and response are printed.}
 }
 \description{
 Return a single news story corresponding to the identifier provided in story_id
 }
 \examples{
-
-> import eikon as ek
-> set_app_id('set your app id here')
-> headlines = get_news_headlines('IBM')
-> for (story_id in headlines$storyId)
-  { story = get_news_story(story_id)
-    print (story)
-  }
+\dontrun{
+set_app_id('set your app id here')
+headlines = get_news_headlines('IBM')
+for (story_id in headlines$storyId) {
+  story = get_news_story(story_id)
+  print (story)
+}
+}
 }

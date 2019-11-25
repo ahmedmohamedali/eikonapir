@@ -1,7 +1,7 @@
 #test symbology
 test_symbology <- function()
 {
-  result <- get_symbology(list("MSFT.O", "GOOG.O", "IBM.N"),"RIC",list("ISIN"),raw_ouput = FALSE,debug=FALSE)
+  result <- get_symbology(list("MSFT.O", "GOOG.O", "IBM.N"),"RIC",list("ISIN"),raw_output = FALSE,debug=FALSE)
   print(result)
 
 }
@@ -10,15 +10,9 @@ test_symbology <- function()
 #test time series
 test_timeSeries <- function(normalize)
 {
-    result <- get_timeseries(list("MSFT.O","VOD.L","IBM.N"),list("*"),"2016-01-01T15:04:05","2016-01-10T15:04:05","daily",normalize)
- # result <- get_timeseries(list("MSFT.O"),"2016-01-01T15:04:05","2016-01-29T15:04:05","daily",list("*"))
-
- return (result)
-
+  result <- get_timeseries(list("MSFT.O","VOD.L","IBM.N"),list("*"),"2016-01-01T15:04:05","2016-01-10T15:04:05","daily",normalize)
+  return (result)
 }
-
-
-
 
 
 

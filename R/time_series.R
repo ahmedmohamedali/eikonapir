@@ -3,45 +3,44 @@
 #'
 #' Returns historical data for one or several RICs
 #'
-#' @param rics: string or list of strings.
+#' @param rics string or list of strings.
 #' Single RIC or List of RICs to retrieve historical data for
-#' @param fields: string or list of strings
+#' @param fields string or list of strings
 #' Use this parameter to filter the returned fields set.
 #  List of available fields: ['TIMESTAMP', 'VALUE', 'VOLUME', 'HIGH', 'LOW', 'OPEN', 'CLOSE', 'COUNT']
 #  By default all fields are returned.
 #
-#' @param start_date: string. The start date of the historical range
+#' @param start_date string. The start date of the historical range
 #' string format is: %Y-%m-%dT%H:%M:%S. ex: 2016-01-20T15:04:05.
 #' Default: current date - 100 days
-#' @param end_date: string. The end date of the historical range.
+#' @param end_date string. The end date of the historical range.
 #  string format is: %Y-%m-%dT%H:%M:%S. ex: 2016-01-20T15:04:05.
 #  Default: current date
-#' @param interval: string. the data interval.
+#' @param interval string. the data interval.
 #' Possible values: 'tick', 'minute', 'hour', 'daily', 'weekly', 'monthly', 'quarterly', 'yearly' (Default 'daily')
-#' @param count: int. The maximum number of data points you want tp retrieve.
-#' @param calendar: string. Possible values: 'native', 'tradingdays', 'calendardays'.
-#' @param corax: string. Possible values are : 'adjusted', 'unadjusted'
-#' @param raw_output: boolean
+#' @param count int. The maximum number of data points you want tp retrieve.
+#' @param calendar string. Possible values: 'native', 'tradingdays', 'calendardays'.
+#' @param corax string. Possible values are : 'adjusted', 'unadjusted'
+#' @param raw_output boolean
 #' Set this parameter to TRUE to get the data in json format
 #' if set to FALSE, the function will return a data frame which shape is defined by the parameter normalize
 #' The default value is False
-#' @param normalize: boolean
+#' @param normalize boolean
 #' if set to True, the function will return a normalized data frame with the following columns 'Date','Security','Field'
 #' If the value of this parameter is False the returned data frame shape will have a different column for each field and a column
 #' for the security
 #' The default value is False
 #' Remark: This parameter has a less precedence than the parameter rawOutput i.e. if rawOutput is set to True, the returned data will be the raw data and this parameter will be ignored
-#' @param debug: bool
+#' @param debug bool
 #' When set to True, the json request and response are printed.
-#'
-#'
 #
 #' @examples
-#'
-#' > eikonapir.set_app_id('YOUR_APP_ID')
-#' > df = get_timeseries(list("MSFT.O","VOD.L","IBM.N"),list("*"),"2016-01-01T15:04:05","2016-01-10T15:04:05","daily")
-#' > print(df)
-
+#' \dontrun{
+#' set_app_id('YOUR_APP_ID')
+#' df = get_timeseries(list("MSFT.O","VOD.L","IBM.N"),list("*"),
+#'        "2016-01-01T15:04:05","2016-01-10T15:04:05","daily")
+#' }
+#' @export
 
 get_timeseries <- function(rics,fields='*', start_date=NULL, end_date=NULL, interval='daily', normalize=FALSE, count=NULL,
                    calendar=NULL, corax=NULL,raw_output=FALSE, debug=FALSE)
@@ -86,14 +85,14 @@ get_timeseries <- function(rics,fields='*', start_date=NULL, end_date=NULL, inte
   if (is.null(start_date))
   {
     # Get the current date/time - 100 days with the timezone.
-    now = datetime.now(tzlocal())
-    start_date <- as.Date(now) - 100
+    now = Sys.time()
+    start_date <- format(as.Date(now) - 100, '%Y-%m-%dT%H:%M:%S')
   }
 
   if (is.null(end_date))
   {
     # Get the current date/time with the timezone.
-    end_date <- datetime.now(tzlocal())
+    end_date <- format(Sys.time(), '%Y-%m-%dT%H:%M:%S')
   }
 
 
@@ -156,7 +155,7 @@ get_normalized_data_frame <- function(data)
       ric_column = rep(ric_column,length(fields) - 1)
       normalized_frame <- cbind(normalized_frame, Security=ric_column)
       values_columns = data_frame[,!(names(data_frame) %in% c('TIMESTAMP'))]
-      values_columns = stack(values_columns)
+      values_columns = utils::stack(values_columns)
       values_columns = data.frame(Field = values_columns[,2],Value=values_columns[,1])
       normalized_frame <- cbind(normalized_frame, values_columns)
       data_frames[[i]] = normalized_frame

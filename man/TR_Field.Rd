@@ -4,24 +4,23 @@
 \alias{TR_Field}
 \title{TR_Field}
 \usage{
-TR_Field(field_name, params = NULL, sort_dir = "asc",
-  sort_priority = NULL)
+TR_Field(field_name, params = NULL, sort_dir = "asc", sort_priority = NULL)
 }
 \arguments{
-\item{field_name:}{string}
+\item{field_name}{string}
 
-\item{params:}{dictionary containing the parameters for the field passed in the argument field_name}
+\item{params}{dictionary containing the parameters for the field passed in the argument field_name}
 
-\item{sort_dir:}{string. Indicate the sort direction. Possible values are 'asc' or 'desc'. The default value is 'asc'}
+\item{sort_dir}{string. Indicate the sort direction. Possible values are 'asc' or 'desc'. The default value is 'asc'}
 
-\item{sort_priority:}{integer. Gives a piority to the field for the sorting. The highest priority is 0 (zero). the default value is None}
+\item{sort_priority}{integer. Gives a piority to the field for the sorting. The highest priority is 0 (zero). the default value is None}
 }
 \description{
 This is a helper function to build the field for the get_data function
 Returns a dictionary that can directly passed to get_data
 }
 \examples{
-> TR_Field('tr.revenue')
-> TR_Field('tr.open','asc',1)
-> TR_Field('TR.GrossProfit',list('Scale': 6, 'Curn': 'EUR'),'asc',0)
+TR_Field('tr.revenue')
+TR_Field('tr.open','asc',1)
+TR_Field('TR.GrossProfit',list('Scale' = 6, 'Curn' = 'EUR'),'asc',0)
 }

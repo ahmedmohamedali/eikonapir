@@ -1,4 +1,3 @@
-ini
 init <- function()
 {
 

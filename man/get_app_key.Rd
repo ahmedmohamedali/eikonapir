@@ -6,8 +6,11 @@
 \usage{
 get_app_key()
 }
+\value{
+A string.
+}
 \description{
-Use this function to get back the application id you have set earlier with set_app_id.
+Use this function to get back the application key you have set earlier with set_app_key.
 }
 \examples{
 my_app_key = get_app_key()

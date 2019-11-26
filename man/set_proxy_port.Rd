@@ -7,11 +7,11 @@
 set_proxy_port(port)
 }
 \arguments{
-\item{port}{integer}
+\item{port}{integer.}
 }
 \description{
 By default the library will try to connect to the proxy default port 9000.
-Use this function if the proxy is listening on another port than 9000
+Use this function if the proxy is listening on another port than 9000.
 }
 \examples{
 set_proxy_port(37009L)

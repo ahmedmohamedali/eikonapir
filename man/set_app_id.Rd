@@ -7,7 +7,7 @@
 set_app_id(appId)
 }
 \arguments{
-\item{appId}{string}
+\item{appId}{string.}
 }
 \description{
 Use this function to set your application id.

@@ -7,7 +7,7 @@
 set_app_key(appKey)
 }
 \arguments{
-\item{appKey}{string}
+\item{appKey}{string.}
 }
 \description{
 Use this function to set your application key.

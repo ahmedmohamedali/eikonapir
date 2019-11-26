@@ -2,7 +2,7 @@ Package: eikonapir
 Type: Package
 Title: Refinitiv Eikon Scripting API for R
 Description: An implementation in the R language of the Refinitiv API for the Eikon users.
-Version: 0.1.0
+Version: 0.1.0.1
 Author: Ahmed Mohamed Ali [aut, cre],
   Panagiotis Cheilaris [ctb]
 Maintainer: Ahmed Mohamed Ali <ahmed.mohamedali2016@gmail.com>
@@ -14,3 +14,5 @@ Imports:
   jsonlite,
   utils
 RoxygenNote: 7.0.0
+Suggests:
+    testthat (>= 2.1.0)

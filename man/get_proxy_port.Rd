@@ -6,8 +6,11 @@
 \usage{
 get_proxy_port()
 }
+\value{
+An integer.
+}
 \description{
-Use this function to get back the proxy port the library will connect to
+Use this function to get back the proxy port the library will connect to.
 }
 \examples{
 prox_port = get_proxy_port()

@@ -13,35 +13,35 @@ get_symbology(
 )
 }
 \arguments{
-\item{symbol}{string or list of strings
+\item{symbol}{string or list of strings.
 Single instrument or list of instruments to convert.}
 
-\item{from_symbol_type}{string}
+\item{from_symbol_type}{string.
+Instrument code to convert from.
+Possible values: 'CUSIP', 'ISIN', 'SEDOL', 'RIC', 'ticker' (Default 'RIC')}
 
 \item{to_symbol_type}{string or list
 Instrument code to convert to.
 Possible values: 'CUSIP', 'ISIN', 'SEDOL', 'RIC', 'ticker'}
 
-\item{raw_output}{boolean
-Set this parameter to True to get the data in json format
-if set to False, the function will return a data frame
-The default value is False}
+\item{raw_output}{boolean.
+Set this parameter to `TRUE` to get the data in json format;
+if set to `FALSE`, the function will return a data frame.
+The default value is `FALSE`.}
 
-\item{debug}{bool
-When set to True, the json request and response are printed.}
+\item{debug}{boolean.
+When set to `TRUE`, the json request and response are printed.}
 }
 \value{
-: DataFrame containing the converted symbols
+A data frame containing the converted symbols
+  or a raw output JSON string.
 }
 \description{
 Returns a list of instrument names converted into another instrument code.
-}
-\details{
-For example: convert SEDOL instrument names to RIC names
+For example, convert SEDOL instrument names to RIC names.
 }
 \examples{
 \dontrun{
-set_app_key('YOUR_APP_KEY')
 get_symbology(list("MSFT.O", "GOOG.O", "IBM.N"), from_symbol_type="RIC", to_symbol_type="ISIN")
 }
 }

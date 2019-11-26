@@ -10,7 +10,7 @@
 #'   Instrument code to convert from.
 #'   Possible values: 'CUSIP', 'ISIN', 'SEDOL', 'RIC', 'ticker' (Default 'RIC')
 
-#' @param to_symbol_type string or list
+#' @param to_symbol_type string or list.
 #'   Instrument code to convert to.
 #'   Possible values: 'CUSIP', 'ISIN', 'SEDOL', 'RIC', 'ticker'
 
@@ -56,7 +56,8 @@ get_symbology <- function(symbol, from_symbol_type='RIC', to_symbol_type=NULL, r
     return (json_data)
   }
   data = jsonlite::fromJSON(json_data)
-  return (data.frame("Symbol"=data$mappedSymbols$symbol,data$mappedSymbols$bestMatch))
+  best_match.df <- data.frame("Symbol"=data$mappedSymbols$symbol,data$mappedSymbols$bestMatch)
+  return (best_match.df)
 
 }
 

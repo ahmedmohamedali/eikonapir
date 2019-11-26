@@ -20,7 +20,7 @@ Single instrument or list of instruments to convert.}
 Instrument code to convert from.
 Possible values: 'CUSIP', 'ISIN', 'SEDOL', 'RIC', 'ticker' (Default 'RIC')}
 
-\item{to_symbol_type}{string or list
+\item{to_symbol_type}{string or list.
 Instrument code to convert to.
 Possible values: 'CUSIP', 'ISIN', 'SEDOL', 'RIC', 'ticker'}
 

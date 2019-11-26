@@ -60,7 +60,7 @@ get_news_headlines <- function (query='Topic:TOPALL and Language:LEN', count=10L
 
 
   # build the payload
-   payload = list('number'= toString(count), 'query'= query, 'productName'=get_app_id(), 'attributionCode'= '')
+   payload = list('number'= toString(count), 'query'= query, 'productName'=get_app_key(), 'attributionCode'= '')
 
   if (!is.null(date_from))
   {
@@ -112,7 +112,7 @@ get_news_story <- function(story_id,raw_output=FALSE, debug=FALSE)
 {
 
   News_Story_endpoint = "News_Story"
-  payload <- list('attributionCode'='', 'productName'= get_app_id() , 'storyId' =  story_id)
+  payload <- list('attributionCode'='', 'productName'= get_app_key() , 'storyId' =  story_id)
   json_data = send_json_request(News_Story_endpoint, payload, debug)
 
   if (raw_output)

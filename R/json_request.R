@@ -13,7 +13,9 @@ send_json_request <- function(entity, request_data, debug=FALSE)
 
   url = paste('http://localhost:',get_proxy_port(),'/api/v1/data',sep='')
   request <- list('Entity'= list('E'= entity, 'W'= payload))
-  response <- httr::POST(url, httr::add_headers('Content-Type'='application/json','x-tr-applicationid'=get_app_id()),body=request,encode = "json")
+  response <- httr::POST(url, httr::add_headers('Content-Type'='application/json',
+                                                'x-tr-applicationid'=get_app_key()),
+                         body=request, encode = "json")
   response_data <- httr::content(response, "text")
   response_status <- response$status_code
 

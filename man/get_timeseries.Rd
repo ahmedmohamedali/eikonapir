@@ -4,54 +4,64 @@
 \alias{get_timeseries}
 \title{get_timeseries}
 \usage{
-get_timeseries(rics, fields = "*", start_date = NULL,
-  end_date = NULL, interval = "daily", normalize = FALSE,
-  count = NULL, calendar = NULL, corax = NULL, raw_output = FALSE,
-  debug = FALSE)
+get_timeseries(
+  rics,
+  fields = "*",
+  start_date = NULL,
+  end_date = NULL,
+  interval = "daily",
+  normalize = FALSE,
+  count = NULL,
+  calendar = NULL,
+  corax = NULL,
+  raw_output = FALSE,
+  debug = FALSE
+)
 }
 \arguments{
-\item{rics:}{string or list of strings.
+\item{rics}{string or list of strings.
 Single RIC or List of RICs to retrieve historical data for}
 
-\item{fields:}{string or list of strings
+\item{fields}{string or list of strings
 Use this parameter to filter the returned fields set.}
 
-\item{start_date:}{string. The start date of the historical range
+\item{start_date}{string. The start date of the historical range
 string format is: %Y-%m-%dT%H:%M:%S. ex: 2016-01-20T15:04:05.
 Default: current date - 100 days}
 
-\item{end_date:}{string. The end date of the historical range.}
+\item{end_date}{string. The end date of the historical range.}
 
-\item{interval:}{string. the data interval.
+\item{interval}{string. the data interval.
 Possible values: 'tick', 'minute', 'hour', 'daily', 'weekly', 'monthly', 'quarterly', 'yearly' (Default 'daily')}
 
-\item{count:}{int. The maximum number of data points you want tp retrieve.}
-
-\item{calendar:}{string. Possible values: 'native', 'tradingdays', 'calendardays'.}
-
-\item{corax:}{string. Possible values are : 'adjusted', 'unadjusted'}
-
-\item{raw_output:}{boolean
-Set this parameter to TRUE to get the data in json format
-if set to FALSE, the function will return a data frame which shape is defined by the parameter normalize
-The default value is False}
-
-\item{normalize:}{boolean
+\item{normalize}{boolean
 if set to True, the function will return a normalized data frame with the following columns 'Date','Security','Field'
 If the value of this parameter is False the returned data frame shape will have a different column for each field and a column
 for the security
 The default value is False
 Remark: This parameter has a less precedence than the parameter rawOutput i.e. if rawOutput is set to True, the returned data will be the raw data and this parameter will be ignored}
 
-\item{debug:}{bool
+\item{count}{int. The maximum number of data points you want tp retrieve.}
+
+\item{calendar}{string. Possible values: 'native', 'tradingdays', 'calendardays'.}
+
+\item{corax}{string. Possible values are : 'adjusted', 'unadjusted'}
+
+\item{raw_output}{boolean
+Set this parameter to TRUE to get the data in json format
+if set to FALSE, the function will return a data frame which shape is defined by the parameter normalize
+The default value is False}
+
+\item{debug}{bool
 When set to True, the json request and response are printed.}
 }
 \description{
 Returns historical data for one or several RICs
 }
 \examples{
-
-> eikonapir.set_app_id('YOUR_APP_ID')
-> df = get_timeseries(list("MSFT.O","VOD.L","IBM.N"),list("*"),"2016-01-01T15:04:05","2016-01-10T15:04:05","daily")
-> print(df)
+\dontrun{
+set_app_key('YOUR_APP_KEY')
+df = get_timeseries(list("MSFT.O","VOD.L","IBM.N"),list("*"),
+       "2016-01-01T15:04:05","2016-01-10T15:04:05","daily")
+}
 }

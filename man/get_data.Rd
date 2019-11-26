@@ -4,13 +4,18 @@
 \alias{get_data}
 \title{get_data}
 \usage{
-get_data(instruments, fields, parameters = NULL, raw_output = FALSE,
-  debug = FALSE)
+get_data(
+  instruments,
+  fields,
+  parameters = NULL,
+  raw_output = FALSE,
+  debug = FALSE
+)
 }
 \arguments{
-\item{instruments:}{string or list. A single instrument or list of instruments to request.}
+\item{instruments}{string or list. A single instrument or list of instruments to request.}
 
-\item{fields:}{string, named list or list of string and/or named list
+\item{fields}{string, named list or list of string and/or named list
   - Single field as a string: 'TR.PriceClose'
   - Single field in a named list for providing parameters and/or sort option:
     ex:
@@ -29,20 +34,26 @@ get_data(instruments, fields, parameters = NULL, raw_output = FALSE,
  Tips: You can launch the Data Item Browser to discover fields and parameters
  or copy field names and parameters from TR Eikon - MS Office formulas}
 
-\item{parameters:}{string or named list. Single global parameter or a list of key=value in the named list.}
+\item{parameters}{string or named list. Single global parameter or a list of key=value in the named list.}
 
-\item{raw_output:}{boolean. By default the output is a data frame. Set raw_output=True to get data in Json format.}
+\item{raw_output}{boolean. By default the output is a data frame. Set raw_output=True to get data in Json format.}
 
-\item{debug:}{bool. When set to True, the json request and response are printed.}
+\item{debug}{bool. When set to True, the json request and response are printed.}
 }
 \description{
 Retreives fields for instruments with the sepcified parameters and sort criteria. The result is returned in a data frame
 }
 \examples{
---------
-> set_app_id('set your app id here')
-> data_frame = get_data(list("IBM", "GOOG.O", "MSFT.O"), list("TR.PriceClose", "TR.Volume", "TR.PriceLow"))
-> data_frame = get_data("IBM", list('TR.Employees', list('TR.GrossProfit'= list('params'=list('Scale'= 6, 'Curn'= 'EUR'),'sort_dir'='asc'))))
-> fields = list(TR_Field('tr.revenue'),TR_Field('tr.open',NULL,'asc',1),TR_Field('TR.GrossProfit',list('Scale'=6, 'Curn'='EUR'),'asc',0))
-> data_frame = get_data(list("IBM","MSFT.O"),fields)
+\dontrun{
+set_app_key('set your app key here')
+data_frame = get_data(list("IBM", "GOOG.O", "MSFT.O"),
+                      list("TR.PriceClose", "TR.Volume", "TR.PriceLow"))
+data_frame = get_data("IBM",
+                      list('TR.Employees',
+                           list('TR.GrossProfit'=
+                             list('params'=list('Scale'= 6, 'Curn'= 'EUR'),'sort_dir'='asc'))))
+fields = list(TR_Field('tr.revenue'),TR_Field('tr.open',NULL,'asc',1),
+              TR_Field('TR.GrossProfit',list('Scale'=6, 'Curn'='EUR'),'asc',0))
+data_frame = get_data(list("IBM","MSFT.O"),fields)
+}
 }

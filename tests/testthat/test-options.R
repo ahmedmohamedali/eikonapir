@@ -8,7 +8,8 @@ test_that("option change port", {
 })
 
 test_that("option default null key", {
-  expect_null(get_app_key())
+  expect_warning(res <- get_app_key())
+  expect_null(res)
 })
 
 test_that("option set some key", {

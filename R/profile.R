@@ -23,7 +23,11 @@ set_app_key <- function(appKey) {
 #' my_app_key = get_app_key()
 #' @export
 get_app_key <- function() {
-  getOption('eikon_application_key')
+  app_key <- getOption('eikon_application_key', default = NULL)
+  if (is.null(app_key)) {
+    warning('INFO: Eikon application key is NULL')
+  }
+  return(app_key)
 }
 
 

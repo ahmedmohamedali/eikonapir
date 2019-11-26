@@ -22,6 +22,10 @@
 #' @param debug boolean.
 #'   When set to `TRUE`, the json request and response are printed.
 #'
+#' @param bestMatch boolean.
+#'   When set to `FALSE`, return all matches (not only best matches).
+#'   The default value is `TRUE`.
+#'
 #' @return A data frame containing the converted symbols
 #'   or a raw output JSON string.
 #'
@@ -30,7 +34,7 @@
 #' get_symbology(list("MSFT.O", "GOOG.O", "IBM.N"), from_symbol_type="RIC", to_symbol_type="ISIN")
 #' }
 #' @export
-get_symbology <- function(symbol, from_symbol_type='RIC', to_symbol_type=NULL, raw_output=FALSE, debug=FALSE)
+get_symbology <- function(symbol, from_symbol_type='RIC', to_symbol_type=NULL, raw_output=FALSE, debug=FALSE, bestMatch=TRUE)
 {
   Symbology_endpoint = 'SymbologySearch'
   if (is.character(to_symbol_type))
@@ -49,15 +53,26 @@ get_symbology <- function(symbol, from_symbol_type='RIC', to_symbol_type=NULL, r
     return(NULL)
   }
 
-  payload <- list('symbols'=symbol,'from'=from_symbol_type,'to'=to_symbol_type,'bestMatchOnly'=TRUE)
+  payload <- list('symbols'=symbol,'from'=from_symbol_type,'to'=to_symbol_type,'bestMatchOnly'=bestMatch)
   json_data = send_json_request(Symbology_endpoint,payload,debug)
   if (raw_output == TRUE)
   {
     return (json_data)
   }
   data = jsonlite::fromJSON(json_data)
-  best_match.df <- data.frame("Symbol"=data$mappedSymbols$symbol,data$mappedSymbols$bestMatch)
-  return (best_match.df)
+  best_match.df <- data.frame(
+    "Symbol" = data$mappedSymbols$symbol,
+    data$mappedSymbols$bestMatch,
+    stringsAsFactors = FALSE)
+  if (bestMatch) {
+    return(best_match.df)
+  } else {
+    other_cols.df <- data$mappedSymbols
+    other_cols.df[['symbol']] <- NULL
+    other_cols.df[['bestMatch']] <- NULL
+    full.df <- cbind(best_match.df, other_cols.df)
+    return(full.df)
+  }
 
 }
 

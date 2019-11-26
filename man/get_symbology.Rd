@@ -9,7 +9,8 @@ get_symbology(
   from_symbol_type = "RIC",
   to_symbol_type = NULL,
   raw_output = FALSE,
-  debug = FALSE
+  debug = FALSE,
+  bestMatch = TRUE
 )
 }
 \arguments{
@@ -31,6 +32,10 @@ The default value is `FALSE`.}
 
 \item{debug}{boolean.
 When set to `TRUE`, the json request and response are printed.}
+
+\item{bestMatch}{boolean.
+When set to `FALSE`, return all matches (not only best matches).
+The default value is `TRUE`.}
 }
 \value{
 A data frame containing the converted symbols

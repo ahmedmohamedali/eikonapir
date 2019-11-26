@@ -2,6 +2,7 @@
 
 export(TR_Field)
 export(get_app_id)
+export(get_app_key)
 export(get_data)
 export(get_news_headlines)
 export(get_news_story)
@@ -9,4 +10,5 @@ export(get_proxy_port)
 export(get_symbology)
 export(get_timeseries)
 export(set_app_id)
+export(set_app_key)
 export(set_proxy_port)

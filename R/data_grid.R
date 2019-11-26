@@ -76,7 +76,7 @@ TR_Field  <- function (field_name,params = NULL,sort_dir ='asc',sort_priority=NU
 #'
 #' @examples
 #' \dontrun{
-#' set_app_id('set your app id here')
+#' set_app_key('set your app key here')
 #' data_frame = get_data(list("IBM", "GOOG.O", "MSFT.O"),
 #'                       list("TR.PriceClose", "TR.Volume", "TR.PriceLow"))
 #' data_frame = get_data("IBM",

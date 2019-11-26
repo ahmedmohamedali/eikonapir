@@ -11,8 +11,9 @@ set_app_id(appId)
 }
 \description{
 Use this function to set your application id.
-The application id should be set before calling functions to retrieve data
+The application id should be set before calling functions to retrieve data.
+DEPRECATED.
 }
 \examples{
-set_app_id('YOUR_APP_ID')
+set_app_id('YOUR_APP_KEY')
 }

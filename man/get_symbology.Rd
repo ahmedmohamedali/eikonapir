@@ -41,7 +41,7 @@ For example: convert SEDOL instrument names to RIC names
 }
 \examples{
 \dontrun{
-set_app_id('YOUR_APP_ID')
+set_app_key('YOUR_APP_KEY')
 get_symbology(list("MSFT.O", "GOOG.O", "IBM.N"), from_symbol_type="RIC", to_symbol_type="ISIN")
 }
 }

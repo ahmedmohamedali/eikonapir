@@ -1,39 +1,60 @@
-init <- function()
-{
-
-  if (exists("requestInfo") == FALSE)
-  {
-    requestInfo <<- methods::new("RequestInfo")
-  }
+options('eikon_application_key' = '')
+options('eikon_proxy_port' = 9000L)
 
 
+#' set_app_key
+#'
+#' Use this function to set your application key.
+#' The application key should be set before calling functions to retrieve data.
+#'
+#' @param appKey string
+#'
+#' @examples
+#' set_app_key('YOUR_APP_KEY')
+#' @export
+set_app_key <- function(appKey) {
+  options('eikon_application_key' = appKey)
 }
+
+
+#' get_app_key
+#'
+#' Use this function to get back the application id you have set earlier with set_app_id.
+#'
+#' @examples
+#' my_app_key = get_app_key()
+#' @export
+get_app_key <- function() {
+  getOption('eikon_application_key')
+}
+
 
 #' set_app_id
 #'
 #' Use this function to set your application id.
-#' The application id should be set before calling functions to retrieve data
+#' The application id should be set before calling functions to retrieve data.
+#' DEPRECATED.
+#'
 #' @param appId string
 #'
 #' @examples
-#' set_app_id('YOUR_APP_ID')
+#' set_app_id('YOUR_APP_KEY')
 #' @export
 set_app_id <- function(appId) {
-  init()
-  requestInfo@application_id <<- appId
+  set_app_key(appId)
 }
 
 
 #' get_app_id
 #'
 #' Use this function to get back the application id you have set earlier with set_app_id.
+#' DEPRECATED.
 #'
 #' @examples
-#' my_app_id = get_app_id()
+#' my_app_key = get_app_id()
 #' @export
 get_app_id <- function() {
-  init()
-  return (requestInfo@application_id)
+  get_app_key()
 }
 
 
@@ -47,8 +68,7 @@ get_app_id <- function() {
 #' set_proxy_port(37009L)
 #' @export
 set_proxy_port <- function(port) {
-  init()
-  requestInfo@proxy_port <<- port
+  options('eikon_proxy_port' = port)
 }
 
 #' get_proxy_port
@@ -60,35 +80,5 @@ set_proxy_port <- function(port) {
 #' prox_port = get_proxy_port()
 #' @export
 get_proxy_port <- function() {
-  init()
-  return (requestInfo@proxy_port)
+  getOption('eikon_proxy_port')
 }
-
-
-
-RequestInfo <- setClass(
-  # Set the name for the class
-  "RequestInfo",
-
-  # Define the slots
-  slots = c(
-    application_id  = "character",
-    proxy_port            = "integer",
-    url             = "character"
-  ),
-
-  prototype=list(application_id="",proxy_port=9000L,url=""),
-
-  # Make a function that can test to see if the data is consistent.
-  # This is not called if you have an initialize function defined!
-  validity=function(object)
-  {
-    #if(sum(object@velocity^2)>100.0) {
-      #return("The velocity level is out of bounds.")
-    #}
-    return(TRUE)
-  }
-
-
-)
-

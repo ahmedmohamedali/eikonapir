@@ -36,7 +36,7 @@
 #
 #' @examples
 #' \dontrun{
-#' set_app_id('YOUR_APP_ID')
+#' set_app_key('YOUR_APP_KEY')
 #' df = get_timeseries(list("MSFT.O","VOD.L","IBM.N"),list("*"),
 #'        "2016-01-01T15:04:05","2016-01-10T15:04:05","daily")
 #' }

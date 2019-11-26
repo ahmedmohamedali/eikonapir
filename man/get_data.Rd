@@ -45,7 +45,7 @@ Retreives fields for instruments with the sepcified parameters and sort criteria
 }
 \examples{
 \dontrun{
-set_app_id('set your app id here')
+set_app_key('set your app key here')
 data_frame = get_data(list("IBM", "GOOG.O", "MSFT.O"),
                       list("TR.PriceClose", "TR.Volume", "TR.PriceLow"))
 data_frame = get_data("IBM",

@@ -27,7 +27,7 @@
 #'
 #' @examples
 #' \dontrun{
-#' set_app_id('set your app id here')
+#' set_app_key('set your app key here')
 #' headlines = get_news_headlines("R:MSFT.O", 2L)
 #' headlines = get_news_headlines("R:MSFT.O IN FRANCE")
 #' headlines = get_news_headlines("R:MSFT.O IN FRANCE IN ENGLISH", count=5L)
@@ -100,7 +100,7 @@ get_news_headlines <- function (query='Topic:TOPALL and Language:LEN', count=10L
 #'
 #' @examples
 #' \dontrun{
-#' set_app_id('set your app id here')
+#' set_app_key('set your app key here')
 #' headlines = get_news_headlines('IBM')
 #' for (story_id in headlines$storyId) {
 #'   story = get_news_story(story_id)

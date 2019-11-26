@@ -19,7 +19,7 @@ Return a single news story corresponding to the identifier provided in story_id
 }
 \examples{
 \dontrun{
-set_app_id('set your app id here')
+set_app_key('set your app key here')
 headlines = get_news_headlines('IBM')
 for (story_id in headlines$storyId) {
   story = get_news_story(story_id)

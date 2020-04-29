@@ -86,14 +86,15 @@ get_timeseries <- function(rics,fields='*', start_date=NULL, end_date=NULL, inte
   if (is.null(start_date))
   {
     # Get the current date/time - 100 days with the timezone.
-    now = datetime.now(tzlocal())
-    start_date <- as.Date(now) - 100
+    start_date <- strftime(Sys.time() - 86400*100, "%Y-%m-%dT%H:%M:%S%z")
+    start_date <- paste0(substr(start_date, 1, nchar(start_date)-2),":", substr(start_date, nchar(start_date)-1, nchar(start_date)))
   }
 
   if (is.null(end_date))
   {
     # Get the current date/time with the timezone.
-    end_date <- datetime.now(tzlocal())
+    end_date <- strftime(Sys.time(), "%Y-%m-%dT%H:%M:%S%z")
+    end_date <- paste0(substr(end_date, 1, nchar(end_date)-2),":", substr(end_date, nchar(end_date)-1, nchar(end_date)))
   }
 
 

@@ -20,7 +20,7 @@ send_json_request <- function(entity, request_data, debug=FALSE)
   if (debug)
   {
     print("Request *************************************")
-    print(jsonlite::toJSON(request))
+    print(jsonlite::toJSON(request, auto_unbox = TRUE))
     print("Response *************************************")
     print(response_data)
     print("Response status *************************************")
